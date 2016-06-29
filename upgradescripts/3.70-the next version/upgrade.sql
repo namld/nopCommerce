@@ -909,7 +909,7 @@ set @resources='
     <Value>Sitemap enabled</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings.GeneralCommon.SitemapEnabled.Hint">
-    <Value>Check to enable the sitemap.</Value>
+    <Value>Check to enable sitemap.</Value>
   </LocaleResource>
   <LocaleResource Name="Admin.Configuration.Settings.GeneralCommon.SitemapIncludeCategories">
     <Value>Sitemap includes categories</Value>

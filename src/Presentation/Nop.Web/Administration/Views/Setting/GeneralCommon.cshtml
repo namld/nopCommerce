@@ -30,11 +30,12 @@
         });
 
         function toggleSitemapSettings() {
+            var ids = "#pnlSitemapIncludeCategories, #pnlSitemapIncludeManufacturers, #pnlSitemapIncludeProducts";
             if ($('#@Html.FieldIdFor(model => model.StoreInformationSettings.SitemapEnabled)').is(':checked')) {
-                $('#pnlSitemapSettings').show();
+                $(ids).show();
             }
             else {
-                $('#pnlSitemapSettings').hide();
+                $(ids).hide();
             }
         }
     </script>
@@ -62,7 +63,10 @@
                                             <label style="padding-left: 0; padding-right: 20px;">
                                                 <span style="display: block">
                                                     <input type="radio" style="margin: 0 5px 8px 0;" name="@Html.FieldNameFor(x => x.StoreInformationSettings.DefaultStoreTheme)" value="@theme.ThemeName"
-                                                           @if (theme.ThemeName == Model.StoreInformationSettings.DefaultStoreTheme) { <text> checked="checked" </text>       }>
+                                                           @if (theme.ThemeName == Model.StoreInformationSettings.DefaultStoreTheme)
+                                                           {
+                                                               <text> checked="checked" </text>
+                                                           }>
                                                     @theme.ThemeTitle
                                                 </span>
                                                 <img src="@Url.Content(theme.PreviewImageUrl)" alt="@theme.PreviewText" title="@theme.PreviewText" width="175">
@@ -174,37 +178,34 @@
                                 @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapEnabled)
                             </div>
                         </div>
-                        <div id="pnlSitemapSettings">
-                            <div class="form-group advanced-setting">
-                                <div class="col-md-3">
-                                    @Html.OverrideStoreCheckboxFor(model => model.StoreInformationSettings.SitemapIncludeCategories_OverrideForStore, model => model.StoreInformationSettings.SitemapIncludeCategories, Model.ActiveStoreScopeConfiguration)
-                                    @Html.NopLabelFor(model => model.StoreInformationSettings.SitemapIncludeCategories)
-                                </div>
-                                <div class="col-md-9">
-                                    @Html.NopEditorFor(model => model.StoreInformationSettings.SitemapIncludeCategories)
-                                    @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapIncludeCategories)
-                                </div>
+                        <div class="form-group advanced-setting" id="pnlSitemapIncludeCategories">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.StoreInformationSettings.SitemapIncludeCategories_OverrideForStore, model => model.StoreInformationSettings.SitemapIncludeCategories, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.StoreInformationSettings.SitemapIncludeCategories)
                             </div>
-
-                            <div class="form-group advanced-setting">
-                                <div class="col-md-3">
-                                    @Html.OverrideStoreCheckboxFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers_OverrideForStore, model => model.StoreInformationSettings.SitemapIncludeManufacturers, Model.ActiveStoreScopeConfiguration)
-                                    @Html.NopLabelFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
-                                </div>
-                                <div class="col-md-9">
-                                    @Html.NopEditorFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
-                                    @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
-                                </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.StoreInformationSettings.SitemapIncludeCategories)
+                                @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapIncludeCategories)
                             </div>
-                            <div class="form-group advanced-setting">
-                                <div class="col-md-3">
-                                    @Html.OverrideStoreCheckboxFor(model => model.StoreInformationSettings.SitemapIncludeProducts_OverrideForStore, model => model.StoreInformationSettings.SitemapIncludeProducts, Model.ActiveStoreScopeConfiguration)
-                                    @Html.NopLabelFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
-                                </div>
-                                <div class="col-md-9">
-                                    @Html.NopEditorFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
-                                    @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
-                                </div>
+                        </div>
+                        <div class="form-group advanced-setting" id="pnlSitemapIncludeManufacturers">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers_OverrideForStore, model => model.StoreInformationSettings.SitemapIncludeManufacturers, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
+                                @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapIncludeManufacturers)
+                            </div>
+                        </div>
+                        <div class="form-group advanced-setting" id="pnlSitemapIncludeProducts">
+                            <div class="col-md-3">
+                                @Html.OverrideStoreCheckboxFor(model => model.StoreInformationSettings.SitemapIncludeProducts_OverrideForStore, model => model.StoreInformationSettings.SitemapIncludeProducts, Model.ActiveStoreScopeConfiguration)
+                                @Html.NopLabelFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.NopEditorFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
+                                @Html.ValidationMessageFor(model => model.StoreInformationSettings.SitemapIncludeProducts)
                             </div>
                         </div>
                     </div>
